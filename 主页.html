@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAR图像识别</title>
+    <style>
+        body {
+            background: url(img1.jpeg) no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 此条属性必须设置否则可能无效*/
+            background-color: #CCCCCC;
+            /* 设置背景颜色，背景图加载过程中会显示背景色 */
+        }
+
+        div.dialog-bz {
+            width: 550px;
+            height: 300px;
+            margin: auto;
+            margin-top: 200px;
+            background-color: white;
+            padding: 50px 50px 30px;
+            box-shadow: 10px 10px 15px black;
+            text-align: center;
+
+        }
+        .dialog-bz-btn {
+            text-decoration: none;
+            font-size: larger;
+            color: #1f4e5f;
+        }
+
+        h2 {
+            font-family: Courier New;
+        }
+
+        #start {
+            width: 40px;
+            height: 40px;
+        }
+
+        a:hover {
+            background-color: #f4f7f7;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dialog-bz">
+        <form action="{% url 'detect_change' %}" method="post" enctype="multipart/form-data">
+            <p>
+                <input type="file" name="image1" accept="image/*" multiple>
+                <input type="file" name="image2" accept="image/*" multiple>
+            </p>
+            <p><input type="submit" value="检测"></p>
+            <a href="copy.html" class="dialog-bz-btn"><b>返回</b></a>
+        </form>
+    </div>
+</body>
+</html>
