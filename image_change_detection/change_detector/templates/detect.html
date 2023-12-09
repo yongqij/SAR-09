@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>第9组SAR图像识别</title>
+    <title>Image Change Detection</title>
 </head>
 <body>
-    <h1>第9组SAR图像识别</h1>
+    <h1>Image Change Detection</h1>
     <form action="{% url 'detect_change' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="image" accept="image/*" multiple>
-        <input type="submit" value="检测">
+        <input type="file" name="image1" accept="image/*">
+        <input type="file" name="image2" accept="image/*">
+        <input type="submit" value="Detect">
     </form>
 </body>
 </html>
