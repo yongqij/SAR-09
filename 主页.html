@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAR图像识别</title>
     <style>
+        #progress-container {
+            width: 50%;
+            height: 30px;
+            margin:auto;
+            position: relative;
+            background-color: #f0f0f0;
+            margin-top: 60px;
+            display: none;
+        }
+
+        #progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: #4caf50;
+            position: absolute;
+        }
+
+        #loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #333;
+        }
         body {
             background: url(img1.jpg) no-repeat center center;
             background-size: cover;
@@ -61,17 +85,36 @@
             color: #1f4e5f;
         }
     </style>
+    <script>
+        function showProgressBar() {
+            document.getElementById('progress-container').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('progress-container').style.display = 'none';
+            }, 10000);
+        }
+    </script>
 </head>
 <body>
 <div class="dialog-bz">
-    <form action="{% url 'detect_change' %}" method="post" enctype="multipart/form-data">
+    <!--form action="{% url 'detect_change' %}" method="post" enctype="multipart/form-data"-->
         <p>
             <input type="file" name="image1" accept="image/*" multiple>
             <input type="file" name="image2" accept="image/*" multiple>
         </p>
-        <p><input type="submit" value="检测"></p>
+        
+        <form onsubmit="showProgressBar(); return false;">
+            <p><input type="submit" value="检测"></p>
+        </form>
         <a href="copy.html" class="dialog-bz-btn"><b>返回</b></a>
-    </form>
+        <div id="progress-container">
+            <!-- 进度条 -->
+            <div id="progress-bar"></div>
+    
+            <!-- 进度文本 -->
+            <div id="loading-text">Loading...</div>
+        </div>
+        
+    <!--</form>-->
 </div>
 
 <head>
